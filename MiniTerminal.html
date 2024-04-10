@@ -1,0 +1,51 @@
+
+<!-- essa é apenas uma tela para testes de função por favor não validar -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Terminal</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="styles.css">
+
+</head>
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0% ; ">
+ <header>
+  <nav>
+
+    <div class="background-terminal"></div>
+    <div class="terminal">
+    <div class="output"> welcome to the mini Terminal! </div>
+    <input type="text" class="input" placeholder="Digite um comando...">
+  </div>
+</div>
+
+</nav>
+</header>
+
+  <script>
+    const outputElement = document.querySelector('.output');
+    const inputElement = document.querySelector('.input');
+
+    function handleInput(event) {
+      if (event.key === 'Enter') {
+        const inputText = inputElement.value;
+        inputElement.value = '';
+
+        appendOutput(`> ${inputText}`);
+      }
+    }
+
+    function appendOutput(text) {
+      const line = document.createElement('div');
+      line.textContent = text;
+      outputElement.appendChild(line);
+      outputElement.scrollTop = outputElement.scrollHeight;
+    }
+
+    inputElement.addEventListener('keydown', handleInput);
+  </script>
+</body>
+</html>
